@@ -41,8 +41,8 @@ if __name__ == '__main__':
     # add_arg("jsonl",    type=str, default=None,       help="jsonl文件路径")
     # add_arg("output_dir",    type=str,  default=None,       help="输出jsonl文件夹")
     # args = parser.parse_args()
-    input_jsonl='datasets/gwilliams2023/preprocess7/info.jsonl'
-    output_dir='datasets/gwilliams2023/preprocess7/split3'
+    input_jsonl='/content/data/gwilliams2023/preprocess7/info.jsonl'
+    output_dir='/content/data/gwilliams2023/preprocess7/split3'
     datas = read_jsonlines(os.path.join(home_dir,input_jsonl))
     story_list=['easy_money', 'cable_spool_fort', 'The_Black_Willow'.lower(), 'lw1']
     # 分割四种
