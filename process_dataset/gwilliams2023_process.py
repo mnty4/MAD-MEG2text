@@ -341,9 +341,9 @@ def process_file(filename_id):
 # python process_dataset/gwilliams2023_process_240411.py
 if __name__ == '__main__':
     home_dir = os.path.expanduser("~")
-    replace_folder = 'preprocess8'
-    folder_path = '/data/johj/MEG/gwilliams2023/'
-    audio_folder_path = f'/data/johj/MEG/gwilliams2023/{replace_folder}/audio'
+    replace_folder = 'preprocess7'
+    folder_path = '/content/data/gwilliams2023/'
+    audio_folder_path = f'/content/data/gwilliams2023/{replace_folder}/audio'
     base_model = 'openai/whisper-base'
     language = 'en'
     task = 'transcribe'
