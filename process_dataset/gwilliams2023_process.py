@@ -344,7 +344,7 @@ if __name__ == '__main__':
     replace_folder = 'preprocess7'
     folder_path = '/content/data/gwilliams2023/'
     audio_folder_path = f'/content/data/gwilliams2023/{replace_folder}/audio'
-    base_model = 'openai/whisper-base'
+    base_model = '/content/whisper-base'
     language = 'en'
     task = 'transcribe'
     timestamps = False
