@@ -98,7 +98,7 @@ def get_sequences(tsv_path):
     # Arrange text in order
     # Merge text
     # Give information about each sentence
-    audio_folder_path = f'/data/johj/MEG/gwilliams2023/preprocess8/audio'
+    audio_folder_path = f'/content/data/gwilliams2023/preprocess8/audio'
     wav_dir = os.path.join(audio_folder_path, 'wav16')
     transcription_dir = os.path.join(audio_folder_path, 'transcription')
     # transcription_files=os.listdir(transcription_dir)
