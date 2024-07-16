@@ -230,6 +230,7 @@ class BrainWhisperForConditionalGeneration2(PreTrainedModel): #nn.Module
     def predict_mel(self,input_features,useful_length,subject_index):
         print("*********************************")
         print(input_features)
+        print(input_features.shape)
         print(useful_length)
         print(subject_index)
         print("*********************************")
