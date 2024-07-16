@@ -254,6 +254,9 @@ trainer = Seq2SeqTrainer(args=training_args,
                          tokenizer=processor.feature_extractor,
                          callbacks=[SavePeftModelCallback1],
                          )
+print(model)
+print("****************************")
+print(trainer)
 # wandb callback
 # print(test_dataset)
 progress_callback = WandbPredictionProgressCallback(
