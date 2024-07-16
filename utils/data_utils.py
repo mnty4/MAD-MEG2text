@@ -244,7 +244,7 @@ class DataCollatorBrainSpeechSeq2SeqWithPadding:
         useful_length = torch.max(torch.stack(
             [torch.tensor(feature['speech_mel_useful_length'], dtype=torch.int) for feature in features])).item()
         # print('useful_length')
-        print(features)
+        # print(features)
         # t2=time.time()
         # print('data_utils',round(t2-t1,2))
         batch['subject_index'] = subject_index
