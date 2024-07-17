@@ -228,7 +228,7 @@ class BrainWhisperForConditionalGeneration2(PreTrainedModel): #nn.Module
         )
 
     def predict_mel(self,input_features,useful_length,subject_index):
-        seq_len = 3750
+        seq_len = 3000
         pred_mel = self.brain_module({"meg": input_features[..., :useful_length]}, {"subject_index": subject_index})
         pad_length = seq_len - pred_mel.size(2)
         if pad_length > 0:
