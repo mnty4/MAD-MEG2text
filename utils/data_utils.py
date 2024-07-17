@@ -250,7 +250,7 @@ class DataCollatorBrainSpeechSeq2SeqWithPadding:
         batch['subject_index'] = subject_index
         batch['mel_spec'] = mel_spec
         batch['useful_length'] = useful_length
-        attention_mask = torch.zeros(3000)
+        attention_mask = torch.zeros(3750)
         attention_mask[:useful_length] = 1
         batch['attention_mask'] = attention_mask
         # get the tokenized label sequences
