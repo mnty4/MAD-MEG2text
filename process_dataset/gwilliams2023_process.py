@@ -231,6 +231,8 @@ def process_meg(tsv_path):
     print(tsv_path,'begin')
     target_meg_sr = 120 # change 200 => 120
     sentences = get_sequences(tsv_path)
+    print('sentences')
+    print(len(sentences))
     save_sentences_path=tsv_path.replace('.tsv','save_sentences_info.jsonl')
     assert save_sentences_path!=tsv_path,' these two have to be different'
     write_jsonlines(save_sentences_path,sentences)
