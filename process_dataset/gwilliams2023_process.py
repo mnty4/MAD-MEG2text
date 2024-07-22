@@ -244,22 +244,20 @@ def process_meg(tsv_path):
         meg.info, meg=True, ref_meg=False, eeg=False, stim=False, eog=False, ecg=False
     )
     data, times = meg[:]
-    print(data)
-    print(times)
+    print('data of all', len(data))
+    print('times of all', len(times))
 
     data, times = meg[picks, :]
-    print(data)
-    print(times)
-    print(len(data))
-    print(len(times))
+    print('data of meg', len(data))
+    print('times of meg', len(times))
 
     meg.pick(picks, verbose=False)
     # meg.notch_filter(60, verbose=False)
     meg.filter(l_freq=1, h_freq=58, verbose=False)
-    print(meg.get_data().shape)
+    print('before resample', meg.get_data().shape)
     meg.resample(target_meg_sr)
     data = meg.get_data()
-    print(data.shape)
+    print('after resample', data.shape)
     assert data.shape[0] == 208, f'data shape:{data.shape}'
     old_audio_path = None
     lines = []
