@@ -245,10 +245,10 @@ def process_meg(tsv_path):
     meg.pick(picks, verbose=False)
     # meg.notch_filter(60, verbose=False)
     meg.filter(l_freq=1, h_freq=58, verbose=False)
-    print(len(meg.get_data()))
+    print('before: ', len(meg.get_data()))
     meg.resample(target_meg_sr)
     data = meg.get_data()
-    print(len(meg.get_data()))
+    print('after: ', len(meg.get_data()))
     assert data.shape[0] == 208, f'data shape:{data.shape}'
     old_audio_path = None
     lines = []
