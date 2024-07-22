@@ -280,8 +280,8 @@ def process_meg(tsv_path):
                              return_tensors="pt", return_attention_mask=True)
         speech_mel_input_features = mel.input_features
         speech_mel_useful_length = torch.sum(mel.attention_mask).item()
+        print('mel input features: ', mel.input_features.shape)
         print(f'mel useful length {speech_mel_useful_length}')
-        print(speech_mel_input_features)
 
         # standardization
         seg_meg, cr = preprocess_eeg_data(seg_meg, threshold=20) # change threshold=20 for the same setting as meta
