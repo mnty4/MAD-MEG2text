@@ -186,17 +186,18 @@ def get_sequences(tsv_path):
 def preprocess_eeg_data(data, threshold=10):
     data = data.T
 
+    print('preprocess_eeg_data', data.shape)
     # 2. Robust scaling
     scaler = RobustScaler()
     scaler.fit(data[:60]) # change 500 => 60
     data = scaler.transform(data).T
     # 3. Clipping outliers
-
+    print('preprocess_eeg_data2', data.shape)
     data[np.abs(data) > threshold] = np.sign(data[np.abs(data) > threshold]) * threshold
     data = data / threshold
     threshold_mask = np.abs(data) > 1
     num_clipped = np.sum(threshold_mask)
-
+    print('preprocess_eeg_data3', data.shape)
     # Calculate proportion
     clipped_ratio = num_clipped / (data.shape[0] * data.shape[1])
     assert clipped_ratio < 0.2, 'clip ratio should below 20%'
@@ -281,7 +282,8 @@ def process_meg(tsv_path):
                              return_tensors="pt", return_attention_mask=True)
         speech_mel_input_features = mel.input_features
         speech_mel_useful_length = torch.sum(mel.attention_mask).item()
-        
+        print(f'mel useful length {speech_mel_useful_length}')
+        print(speech_mel_input_features)
 
         # standardization
         seg_meg, cr = preprocess_eeg_data(seg_meg, threshold=20) # change threshold=20 for the same setting as meta
