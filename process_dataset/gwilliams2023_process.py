@@ -242,6 +242,16 @@ def process_meg(tsv_path):
     picks = mne.pick_types(
         meg.info, meg=True, ref_meg=False, eeg=False, stim=False, eog=False, ecg=False
     )
+    data, times = meg[:]
+    print(data)
+    print(times)
+
+    data, times = meg[picks, :]
+    print(data)
+    print(times)
+    print(len(data))
+    print(len(times))
+
     meg.pick(picks, verbose=False)
     # meg.notch_filter(60, verbose=False)
     meg.filter(l_freq=1, h_freq=58, verbose=False)
