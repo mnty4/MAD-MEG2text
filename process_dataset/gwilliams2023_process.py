@@ -186,18 +186,17 @@ def get_sequences(tsv_path):
 def preprocess_eeg_data(data, threshold=10):
     data = data.T
 
-    print('preprocess_eeg_data', data.shape)
     # 2. Robust scaling
     scaler = RobustScaler()
     scaler.fit(data[:60]) # change 500 => 60
     data = scaler.transform(data).T
+
     # 3. Clipping outliers
-    print('preprocess_eeg_data2', data.shape)
     data[np.abs(data) > threshold] = np.sign(data[np.abs(data) > threshold]) * threshold
     data = data / threshold
     threshold_mask = np.abs(data) > 1
     num_clipped = np.sum(threshold_mask)
-    print('preprocess_eeg_data3', data.shape)
+
     # Calculate proportion
     clipped_ratio = num_clipped / (data.shape[0] * data.shape[1])
     assert clipped_ratio < 0.2, 'clip ratio should below 20%'
@@ -232,32 +231,19 @@ def process_meg(tsv_path):
     print(tsv_path,'begin')
     target_meg_sr = 120 # change 200 => 120
     sentences = get_sequences(tsv_path)
-    print(f'sentences: {len(sentences)}')
-    print(f'sentences[0]: {len(sentences[0])}')
     save_sentences_path=tsv_path.replace('.tsv','save_sentences_info.jsonl')
     assert save_sentences_path!=tsv_path,' these two have to be different'
     write_jsonlines(save_sentences_path,sentences)
-    # print(tsv_path,len(sentences))
     meg_path = sentences[0]['meg_path']
     meg = mne.io.read_raw_kit(meg_path, preload=True, verbose=False)
     picks = mne.pick_types(
         meg.info, meg=True, ref_meg=False, eeg=False, stim=False, eog=False, ecg=False
     )
-    data, times = meg[:]
-    print('data of all', len(data))
-    print('times of all', len(times))
-
-    data, times = meg[picks, :]
-    print('data of meg', len(data))
-    print('times of meg', len(times))
-
     meg.pick(picks, verbose=False)
     # meg.notch_filter(60, verbose=False)
     meg.filter(l_freq=1, h_freq=58, verbose=False)
-    print('before resample', meg.get_data().shape)
     meg.resample(target_meg_sr)
     data = meg.get_data()
-    print('after resample', data.shape)
     assert data.shape[0] == 208, f'data shape:{data.shape}'
     old_audio_path = None
     lines = []
@@ -280,8 +266,7 @@ def process_meg(tsv_path):
                              return_tensors="pt", return_attention_mask=True)
         speech_mel_input_features = mel.input_features
         speech_mel_useful_length = torch.sum(mel.attention_mask).item()
-        print('mel input features: ', mel.input_features.shape)
-        print(f'mel useful length {speech_mel_useful_length}')
+        # print('mel input features: ', mel.input_features.shape)
 
         # standardization
         seg_meg, cr = preprocess_eeg_data(seg_meg, threshold=20) # change threshold=20 for the same setting as meta
