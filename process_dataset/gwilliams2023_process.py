@@ -372,7 +372,7 @@ if __name__ == '__main__':
                                                  language=language,
                                                  task=task,
                                                  no_timestamps=not timestamps,
-                                                 local_files_only=local_files_only, hop_length=128) # equal to Meta 
+                                                 local_files_only=local_files_only, hop_length=160) # equal to Meta
     # results=[process_file(file) for file in events_tsv_list[:2]]
 
     pool = Pool(processes=16)
