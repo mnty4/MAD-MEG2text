@@ -231,8 +231,7 @@ def process_meg(tsv_path):
     print(tsv_path,'begin')
     target_meg_sr = 120 # change 200 => 120
     sentences = get_sequences(tsv_path)
-    print('sentences')
-    print(len(sentences))
+    print(f'sentences: {len(sentences)}')
     save_sentences_path=tsv_path.replace('.tsv','save_sentences_info.jsonl')
     assert save_sentences_path!=tsv_path,' these two have to be different'
     write_jsonlines(save_sentences_path,sentences)
@@ -315,7 +314,6 @@ def process_meg(tsv_path):
         seg_jsonl_path = tsv_path.replace('download', replace_folder).replace('events.tsv', 'info.jsonl')
         write_jsonlines(seg_jsonl_path, lines)
     print(tsv_path,'done')
-    print(len(lines))
     return lines
 
 
@@ -372,5 +370,5 @@ if __name__ == '__main__':
     all_lines = []
     for lines in results:
         all_lines.extend(lines)
-
+    print(f'all_lines: {len(all_lines)}')
     write_jsonlines(os.path.join(folder_path.replace('download', replace_folder), 'info.jsonl'), all_lines)
