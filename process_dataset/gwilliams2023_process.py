@@ -229,7 +229,7 @@ def makedirs(path):
 
 def process_meg(tsv_path):
     print(tsv_path,'begin')
-    target_meg_sr = 200# change 200 => 120
+    target_meg_sr = 120 # change 200 => 120
     sentences = get_sequences(tsv_path)
     save_sentences_path=tsv_path.replace('.tsv','save_sentences_info.jsonl')
     assert save_sentences_path!=tsv_path,' these two have to be different'
@@ -313,6 +313,7 @@ def process_meg(tsv_path):
         seg_jsonl_path = tsv_path.replace('download', replace_folder).replace('events.tsv', 'info.jsonl')
         write_jsonlines(seg_jsonl_path, lines)
     print(tsv_path,'done')
+    print(len(lines))
     return lines
 
 
