@@ -232,9 +232,7 @@ def process_meg(tsv_path):
     target_meg_sr = 120 # change 200 => 120
     sentences = get_sequences(tsv_path)
     print(f'sentences: {len(sentences)}')
-    print(f'sentences[meg_path]: {len(sentences[0]["meg_path"])}')
     print(f'sentences[0]: {len(sentences[0])}')
-    print(sentences[0]["meg_path"])
     save_sentences_path=tsv_path.replace('.tsv','save_sentences_info.jsonl')
     assert save_sentences_path!=tsv_path,' these two have to be different'
     write_jsonlines(save_sentences_path,sentences)
@@ -247,8 +245,10 @@ def process_meg(tsv_path):
     meg.pick(picks, verbose=False)
     # meg.notch_filter(60, verbose=False)
     meg.filter(l_freq=1, h_freq=58, verbose=False)
+    print(len(meg.get_data()))
     meg.resample(target_meg_sr)
     data = meg.get_data()
+    print(len(meg.get_data()))
     assert data.shape[0] == 208, f'data shape:{data.shape}'
     old_audio_path = None
     lines = []
