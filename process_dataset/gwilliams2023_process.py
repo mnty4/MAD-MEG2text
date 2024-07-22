@@ -368,5 +368,4 @@ if __name__ == '__main__':
     all_lines = []
     for lines in results:
         all_lines.extend(lines)
-    print(f'all_lines: {len(all_lines)}')
     write_jsonlines(os.path.join(folder_path.replace('download', replace_folder), 'info.jsonl'), all_lines)
