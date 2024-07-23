@@ -1,5 +1,5 @@
 # train
-CUDA_VISIBLE_DEVICES=0 python finetune.py --per_device_train_batch_size=32\
+CUDA_VISIBLE_DEVICES=0 python finetune.py --per_device_train_batch_size=8\
  --per_device_eval_batch_size=8 --mmd_bm=0.1 --mmd=0.1\
  --eval_steps=1000 --save_steps=1000 --trainable_brainmodule=True --use_adalora=False\
  --learning_rate=3e-4 --fp16=True --timestamps=False\
