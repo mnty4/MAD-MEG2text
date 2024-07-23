@@ -24,8 +24,8 @@ import re
 
 parser = argparse.ArgumentParser(description=__doc__)
 add_arg = functools.partial(add_arguments, argparser=parser)
-add_arg("test_data",   type=str, default="/data/johj/MEG/gwilliams2023/preprocess7/split3/cable_spool_fort/lw1/train.jsonl", help="test set")
-add_arg("checkpoint_path",  type=str, default="models/whisper-tiny-finetune", help="full model checkpoint path")
+add_arg("test_data",   type=str, default="/content/data/gwilliams2023/preprocess7/split3/cable_spool_fort/lw1/test.jsonl", help="test set")
+add_arg("checkpoint_path",  type=str, default="/content/models/whisper-finetune-test", help="full model checkpoint path")
 add_arg("model_path",    type=str, default="/data/johj/MEG/transformer_whisper_models", help="whisper")
 add_arg("modal", type=str, default='speech',  help="输入的模态")
 add_arg("sampling_rate", type=int, default=120,  help="输入信号采样率")
