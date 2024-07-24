@@ -105,12 +105,12 @@ device = torch.device(device_map)
 model.to(device)
 if args.noise==True:
     print(args.noise)
-    results_path = '/data/johj/results/noise/'+state_dict.config.run_name
-    mel_path = '/data/johj/predmel_output/noise/'+state_dict.config.run_name
+    results_path = '/content/data/johj/results/noise/'+state_dict.config.run_name
+    mel_path = '/content/data/johj/predmel_output/noise/'+state_dict.config.run_name
 
 else:
-    results_path = '/data/johj/results/'+state_dict.config.run_name
-    mel_path = '/data/johj/predmel_output/'+state_dict.config.run_name
+    results_path = '/content/data/johj/results/'+state_dict.config.run_name
+    mel_path = '/content/data/johj/predmel_output/'+state_dict.config.run_name
 
 if not os.path.exists(results_path):
     os.makedirs(results_path)

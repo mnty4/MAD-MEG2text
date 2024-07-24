@@ -12,11 +12,11 @@ CUDA_VISIBLE_DEVICES=0 python finetune.py --per_device_train_batch_size=16\
 
 # non teacher-forcing
 # CUDA_VISIBLE_DEVICES=0 python evaluation.py\
-#  --checkpoint_path='../neuspeech/output_model/exp10_0521_0213_clip_1.0_0.0003_32_trainable_brainmodule_True_adalora_False/transformer_whisper_models/checkpoint-6000/'\
-#  --model_path='/data/johj/MEG/transformer_whisper_models'\
+#  --checkpoint_path='/content/MAD-MEG-fork/output_model/Exp_0723_0059_mmd_bm_0.1mmd_0.1_0.0003_16_trainable_brainmodule_True_adalora_False/whisper-base/checkpoint-final/'\
+#  --model_path='/content/whisper-base'\
 #  --test_data='/NFS/Users/johj/gwilliams2023/preprocess8/split3/cable_spool_fort/lw1/test.jsonl'\
 #  --modal='eeg' --sampling_rate=100 --eeg_ch=208 --batch_size=4 --num_workers=4 --language='English'\
-#  --timestamps=False --local_files_only=True --teacher_forcing=False --post_processing=True 
+#  --timestamps=False --local_files_only=True --teacher_forcing=False --post_processing=True
 
 # # noise non teacher-forcing
 # CUDA_VISIBLE_DEVICES=0 python evaluation.py\
