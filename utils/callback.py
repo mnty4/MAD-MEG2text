@@ -12,7 +12,7 @@ class SavePeftModelCallback1(TrainerCallback):
         print(args)
         print(state.global_step, state.save_steps)
         print('state.log_history len: ', len(state.log_history))
-        if len(state.log_history) > 0:
+        if len(state.log_history) > 0 and 'eval_loss' in state.log_history[0].keys():
             print('state.log_history: ', state.log_history[0]['eval_loss'])
         control.should_save=False
         checkpoint_folder = os.path.join(args.output_dir, f"{PREFIX_CHECKPOINT_DIR}-{state.global_step}")
