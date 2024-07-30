@@ -1,9 +1,9 @@
 # train
 CUDA_VISIBLE_DEVICES=0 python finetune.py --per_device_train_batch_size=16\
  --per_device_eval_batch_size=16 --mmd_bm=0.1 --mmd=0.1\
- --eval_steps=10 --save_steps=10 --trainable_brainmodule=True --use_adalora=False\
+ --eval_steps=10 --save_steps=11 --trainable_brainmodule=True --use_adalora=False\
  --learning_rate=3e-4 --fp16=True --timestamps=False\
- --num_train_epochs=1 --warmup_steps=1 --max_audio_len=30\
+ --num_train_epochs=5 --warmup_steps=1 --max_audio_len=30\
  --use_8bit=False --num_workers=16 --modal='eeg' --eeg_ch=208 --sampling_rate=100 --orig_sample_rate=100\
  --train_data='/content/data/gwilliams2023/preprocess7/split3/cable_spool_fort/lw1/train.jsonl'\
  --test_data='/content/data/gwilliams2023/preprocess7/split3/cable_spool_fort/lw1/val.jsonl'\
