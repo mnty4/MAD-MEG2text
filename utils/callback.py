@@ -8,8 +8,9 @@ import torch
 class SavePeftModelCallback1(TrainerCallback):
     def on_step_end(self, args: TrainingArguments, state: TrainerState, control: TrainerControl, **kwargs):
         # First, check whether it is time to save
-        if len(state.log_history) > 0 and state.global_step == 1000:
-            print('here we goo!!')
+        if state.global_step % state.save_steps == 0:
+            print(state.log_history)
+            print(args)
         if len(state.log_history) > 0 and 'eval_loss' in state.log_history[0].keys():
             print('on step end')
             print(args)
